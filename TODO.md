@@ -1,0 +1,1 @@
+# TODO: Fix Footer Colors\n\n## Steps:\n- [x] Step 1: Edit src/components/layout/Footer.jsx to update background to #0a0908 and text to white.\n- [ ] Step 2: Verify changes in development server.\n- [ ] Step 3: Mark complete and cleanup TODO.md.\n\nCurrent progress: Footer.jsx updated with dark background #0a0908 and white text.
