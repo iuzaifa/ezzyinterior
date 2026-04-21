@@ -40,6 +40,7 @@ export default function HeroSection() {
         {/* buttons */}
         <div className="flex flex-col sm:flex-row gap-3 mt-8 w-full max-w-md mx-auto">
           <button
+            id="contact-form"
             onClick={handleConsultation}
             className="cursor-pointer px-6 py-3 bg-[#606C38] hover:scale-105 hover:bg-[#283618] rounded-full text-[#FEFAE0] font-medium shadow-lg hover:shadow-xl transition-all duration-300"
           >
