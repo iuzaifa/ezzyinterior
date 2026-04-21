@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   FiUsers,
   FiMonitor,
@@ -12,6 +13,17 @@ import {
 import { websiteData } from "../../data/websitedata";
 
 const Services = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleServiceClick = useCallback(() => {
+    if (location.pathname === "/contact") {
+      const form = document.getElementById("contact-form");
+      if (form) form.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/contact");
+    }
+  }, [location.pathname, navigate]);
   const iconMap = {
     FiUsers: FiUsers,
     FiMonitor: FiMonitor,
@@ -32,7 +44,7 @@ const Services = () => {
 
   return (
     <>
-      <section className=" px-6 md:px-12 lg:px-20 py-20 flex flex-col items-center">
+      <section className=" px-6 md:px-12 py py-26 pb-32 flex flex-col items-center">
         {/* TITLE */}
         <div className="max-w-5xl w-full mb-10 text-center md:mx-auto">
           <h1 className="text-3xl md:text-4xl font-semibold text-[#283618] mb-4">
@@ -48,12 +60,16 @@ const Services = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`relative p-6 flex flex-col gap-4 border-r border-b border-[#1a1423]/30 transition-all duration-300
+              className={`relative p-6 flex flex-col gap-4 border-r border-b border-[#1a1423]/30 transition-all duration-300 cursor-pointer hover:scale-[1.02] active:scale-[0.98]
               ${
                 index === 0
                   ? "bg-gradient-to-b from-[#FEFAE0] to-[#FEFAE0]/50"
-                  : "[#FEFAE0] hover:bg-gradient-to-b hover:from-[#FEFAE0] hover:to-[#FEFAE0]/50"
+                  : "bg-[#FEFAE0] hover:bg-gradient-to-b hover:from-[#FEFAE0] hover:to-[#FEFAE0]/50"
               }`}
+              onClick={handleServiceClick}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === "Enter" && handleServiceClick()}
             >
               {feature.hasAccent && (
                 <div className="absolute left-0 top-10 bottom-10 w-1.5 bg-[#DDA15E] rounded-r" />

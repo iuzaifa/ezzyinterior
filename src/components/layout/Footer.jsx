@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaTwitter, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 import { websiteData } from "../../data/websitedata";
 
@@ -31,13 +32,17 @@ export default function Footer() {
               </h3>
               <div className="flex flex-col gap-2 mt-4 text-white">
                 {websiteData.footer.links.map((item) => (
-                  <a
+                  <Link
                     key={item}
-                    href="/"
+                    to={
+                      item.toLowerCase() === "home"
+                        ? "/"
+                        : `/${item.toLowerCase().replace(" ", "-")}`
+                    }
                     className="hover:text-[#DDA15E] transition-colors cursor-pointer"
                   >
                     {item}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -67,13 +72,19 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between text-xs text-white gap-4">
             <p>{websiteData.footer.copyright}</p>
             <div className="flex gap-4">
-              <a href="#" className="hover:text-[#DDA15E] transition-colors">
+              <Link
+                to="/contact"
+                className="hover:text-[#DDA15E] transition-colors cursor-pointer"
+              >
                 Terms
-              </a>
+              </Link>
               <span>|</span>
-              <a href="#" className="hover:text-[#DDA15E] transition-colors">
+              <Link
+                to="/contact"
+                className="hover:text-[#DDA15E] transition-colors cursor-pointer"
+              >
                 Privacy
-              </a>
+              </Link>
             </div>
           </div>
         </div>
