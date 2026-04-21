@@ -16,7 +16,7 @@
 //   return (
 //     <div className="w-full flex justify-center fixed top-3 z-50 px-3">
 //       <nav
-//         className="flex items-center w-full max-w-6xl justify-between px-4 py-3 rounded-full text-[#283618] 
+//         className="flex items-center w-full max-w-6xl justify-between px-4 py-3 rounded-full text-[#283618]
 //       bg-[#FEFAE0]/95 backdrop-blur-md border border-[#283618]/20 shadow-lg"
 //       >
 //         {/* LOGO */}
@@ -98,7 +98,6 @@
 
 // export default Navbar;
 
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -118,7 +117,6 @@ function Navbar() {
     <div className="w-full flex justify-center fixed top-3 z-50 px-3">
       {/* NAVBAR */}
       <nav className="flex items-center w-full max-w-6xl justify-between px-4 py-3 rounded-full text-[#283618] bg-[#FEFAE0]/95 backdrop-blur-md border border-[#283618]/20 shadow-lg">
-
         {/* LOGO */}
         <Link to="/" className="flex items-center">
           <img
@@ -151,7 +149,7 @@ function Navbar() {
 
         {/* MOBILE MENU BUTTON */}
         <button
-          className="md:hidden text-2xl p-2 rounded-full hover:bg-[#606C38]/20 transition"
+          className="md:hidden text-2xl p-3 min-h-[44px] rounded-full hover:bg-[#606C38]/20 transition flex items-center justify-center"
           onClick={() => setOpen(true)}
         >
           <FiMenu />
