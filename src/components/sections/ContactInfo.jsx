@@ -1,6 +1,5 @@
 import React from "react";
 import { FiMail, FiPhone, FiHome } from "react-icons/fi";
-<<<<<<< HEAD
 import { websiteData } from "../../data/websitedata";
 
 export default function ContactInfo() {
@@ -22,44 +21,6 @@ export default function ContactInfo() {
       {/* Title */}
       <h2 className="text-center text-3xl md:text-4xl font-bold text-[#283618] mb-12">
         {websiteData.sections.contactInfo.title}
-=======
-
-export default function ContactInfo() {
-  const data = [
-    {
-      icon: <FiMail size={26} />,
-      title: "Email Address",
-      content: [
-        "info@ezzyinterior.com",
-        "support@ezzyinterior.com",
-      ],
-    },
-    {
-      icon: <FiPhone size={26} />,
-      title: "Phone Number",
-      content: [
-        "+91 98765 43210",
-        "+91 91234 56789",
-      ],
-    },
-    {
-      icon: <FiHome size={26} />,
-      title: "Office Address",
-      content: [
-        "EZZY Interior, 2nd Floor, Design Plaza,",
-        "MG Road, Near City Center Mall,",
-        "Lucknow, Uttar Pradesh - 226010",
-      ],
-    },
-  ];
-
-  return (
-    <section className="bg-[#FEFAE0] py-16 px-4">
-      
-      {/* Title */}
-      <h2 className="text-center text-3xl md:text-4xl font-bold text-[#283618] mb-12">
-        Office Near You.
->>>>>>> 056a3c897da983d5ea813c9168f8894901f40578
       </h2>
 
       {/* Cards */}
@@ -67,12 +28,8 @@ export default function ContactInfo() {
         {data.map((item, i) => (
           <div
             key={i}
-            className="bg-white rounded-lg p-6 flex items-start gap-5 shadow-md hover:shadow-xl transition duration-300 hover:scale-105"
+            className="bg-white rounded-lg p-6 flex items-start gap-5 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
-<<<<<<< HEAD
-=======
-            
->>>>>>> 056a3c897da983d5ea813c9168f8894901f40578
             {/* Icon */}
             <div className="min-w-[60px] h-[60px] flex items-center justify-center rounded-full bg-[#606C38] text-[#FEFAE0]">
               {item.icon}
@@ -95,8 +52,4 @@ export default function ContactInfo() {
       </div>
     </section>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 056a3c897da983d5ea813c9168f8894901f40578

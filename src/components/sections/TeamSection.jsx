@@ -1,57 +1,13 @@
 import React from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FaXTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa6";
-<<<<<<< HEAD
 import { websiteData } from "../../data/websitedata";
-=======
->>>>>>> 056a3c897da983d5ea813c9168f8894901f40578
 
 const TeamSection = () => {
   const [startIndex, setStartIndex] = React.useState(0);
   const [visibleCount, setVisibleCount] = React.useState(4);
 
-<<<<<<< HEAD
   const members = websiteData.team;
-=======
-  const members = [
-    {
-      name: "Cristofer Levin",
-      role: "Founder & CEO",
-      image:
-        "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=600",
-    },
-    {
-      name: "Daniel Wong",
-      role: "Content Manager",
-      image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=600",
-    },
-    {
-      name: "Cristofer Levin",
-      role: "Founder & CEO",
-      image:
-        "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=600",
-    },
-    {
-      name: "Sophia Lee",
-      role: "UI/UX Designer",
-      image:
-        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600",
-    },
-    {
-      name: "Emily Karter",
-      role: "Growth Marketing",
-      image:
-        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=600",
-    },
-    {
-      name: "Sophia Lee",
-      role: "UI/UX Designer",
-      image:
-        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600",
-    },
-  ];
->>>>>>> 056a3c897da983d5ea813c9168f8894901f40578
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -73,7 +29,6 @@ const TeamSection = () => {
 
   return (
     <section className="bg-[#FEFAE0]/50 py-20 px-6">
-<<<<<<< HEAD
       <div className="pb-16">
         <h1 className="text-3xl font-semibold text-center mx-auto text-[#283618]">
           {websiteData.sections.team.title}
@@ -82,17 +37,6 @@ const TeamSection = () => {
           {websiteData.sections.team.subtitle}
         </p>
       </div>
-=======
-     <div className="pb-16">
-       <h1 className="text-3xl font-semibold text-center mx-auto text-[#283618]">
-        Our Team
-      </h1>
-      <p className="text-sm text-[#1a1423] text-center mt-2 max-w-md mx-auto">
-        A visual collection of our most recent works - each piece crafted with
-        intention, emotion and style.
-      </p>
-     </div>
->>>>>>> 056a3c897da983d5ea813c9168f8894901f40578
 
       <div className="flex items-center justify-center gap-4 md:gap-8">
         <button

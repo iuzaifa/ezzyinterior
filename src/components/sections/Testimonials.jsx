@@ -1,54 +1,14 @@
 import React from "react";
 import { FaQuoteRight } from "react-icons/fa";
-<<<<<<< HEAD
 import { websiteData } from "../../data/websitedata";
 
 export default function Testimonials() {
   const testimonials = websiteData.testimonials;
-=======
-
-export default function Testimonials() {
-  const testimonials = [
-    {
-      name: "Donald Jackman",
-      role: "Content Creator",
-      image:
-        "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/userImage/userImage1.png",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      name: "Richard Nelson",
-      role: "Content Writer",
-      image:
-        "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/userImage/userImage2.png",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      name: "James Washington",
-      role: "Content Marketing",
-      image:
-        "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/userImage/userImage3.png",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      name: "Michael Scott",
-      role: "Marketing Lead",
-      image:
-        "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/userImage/userImage1.png",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-  ];
->>>>>>> 056a3c897da983d5ea813c9168f8894901f40578
 
   return (
     <div className="flex flex-col items-center text-center py-20 max-w-7xl mx-auto">
       <h1 className="text-4xl font-bold max-w-[740px] mb-[72px] text-[#283618]">
-<<<<<<< HEAD
         {websiteData.sections.testimonials.title}
-=======
-        Trusted by <span className="text-[#606C38]">30+</span> world class
-        companies & design teams
->>>>>>> 056a3c897da983d5ea813c9168f8894901f40578
       </h1>
 
       {/* 4 × 1 GRID */}
