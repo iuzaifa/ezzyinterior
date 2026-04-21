@@ -2,11 +2,12 @@ import { websiteData } from "../../data/websitedata";
 
 export default function HeroSection() {
   return (
-    <section className="relative flex items-center justify-center h-[calc(100vh-5rem)] sm:h-screen text-center bg-[url('hero.jpeg')] bg-top bg-no-repeat bg-cover">
-      {/* 🔥 Overlay */}
+    <section
+      className="relative flex items-center justify-center h-[calc(100vh-5rem)] sm:h-screen text-center bg-top bg-no-repeat bg-cover"
+      style={{ backgroundImage: "url('/hero.jpeg')" }}
+    >
       <div className="absolute inset-0 bg-black/50"></div>
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col items-center px-4 w-full">
         {/* heading */}
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold max-w-4xl text-[#FEFAE0] mb-4">
