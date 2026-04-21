@@ -5,9 +5,9 @@ export default function Footer() {
     <>
       <footer className="bg-[#0a0908] py-12 px-4 sm:px-6 lg:px-8 text-white">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap justify-between gap-12">
+<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
             {/* Logo + About */}
-            <div className="w-full md:w-[30%]">
+            <div className="space-y-4">
               <img src="./logo.png" alt="" className="h-12" />
 
               <div className="w-40 h-px mt-6 bg-white/20" />
@@ -17,7 +17,7 @@ export default function Footer() {
               </p>
             </div>
             {/* Links */}
-            <div className="w-full md:w-[15%]">
+            <div className="space-y-2">
               <h3 className="text-md font-medium text-[#DDA15E]">
                 Important Links
               </h3>
@@ -36,7 +36,7 @@ export default function Footer() {
               </div>
             </div>
             {/* Social */}
-            <div className="w-full md:w-[15%]">
+            <div className="space-y-3">
               <h3 className="text-md font-medium text-[#DDA15E]">Social Links</h3>
               <div className="flex flex-col gap-3 mt-4 text-white">
                 <a className="flex cursor-pointer items-center gap-2 hover:text-[#DDA15E] transition-colors">

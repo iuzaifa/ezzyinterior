@@ -1,1 +1,19 @@
-# TODO: Fix Footer Colors\n\n## Steps:\n- [x] Step 1: Edit src/components/layout/Footer.jsx to update background to #0a0908 and text to white.\n- [ ] Step 2: Verify changes in development server.\n- [ ] Step 3: Mark complete and cleanup TODO.md.\n\nCurrent progress: Footer.jsx updated with dark background #0a0908 and white text.
+# Responsiveness Fixes TODO
+
+## [ ] 1. Create TODO.md ✅
+
+## [ ] 2. Fix layout files (Footer.jsx, Navbar.jsx)
+
+## [ ] 3. Fix grid-heavy sections (OurWork.jsx, WorkGallary.jsx, ContactInfo.jsx)
+
+## [ ] 4. Fix Gallery.jsx and BreadcrumbHeader.jsx
+
+## [ ] 5. Minor tweaks (HeroSection.jsx, AboutSection.jsx)
+
+## [ ] 6. Test responsiveness across breakpoints
+
+## [ ] 7. Complete task
+
+**Testing command:** `npm run dev` then check dev tools: 320px, 640px, 768px, 1024px, 1440px. No horizontal scroll, proper stacking.
+
+**Current progress:** Starting edits...
