@@ -1,12 +1,14 @@
-# OurWork.jsx Component Fixes - ✅ COMPLETE
+# Button Navigation & UX Improvements - Progress Tracker
 
-## Steps:
+## Plan Status: ✅ Approved
 
-- [✅] Step 1: Create this TODO.md
-- [✅] Step 2: Fix all Tailwind class typos in src/components/sections/OurWork.jsx (recreated full working file)
-- [✅] Step 3: Test the component functionality (modal open/close, scroll lock, image grid, total count=22)
-- [✅] Step 4: Mark complete
+### TODO Steps (0/6 complete):
 
-**Status:** All Tailwind classes fixed. Component now renders without JSX/TS errors. Total images shows 22. Modal, hover effects, scroll lock all functional. Ready to run `npm run dev` to test live.
+- [✅] **Step 1**: Enhance Navbar.jsx - Add cursor-pointer, improve hovers on links/buttons
+- [✅] **Step 2**: Update HeroSection.jsx - Add Router hooks, smart navigation for both buttons, UX hovers
+- [✅] **Step 3**: Update CTA.jsx - Smart handleConsultation (location-aware), nav for View Our Work, UX enhancements
+- [✅] **Step 4**: Improve Button.jsx - Create reusable Button component
+- [ ] **Step 5**: Polish OurWork.jsx cards & other interactive elements (cursor-pointer consistency)
+- [ ] **Step 6**: Test & Complete - Run dev server, verify all navigations/hovers, mark complete
 
-**Next:** Run dev server to verify images load (may need /public/images/). Delete this TODO.md if complete.
+**Current Progress**: Starting Step 1...

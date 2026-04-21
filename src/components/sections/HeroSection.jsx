@@ -1,6 +1,24 @@
+import { useCallback } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { websiteData } from "../../data/websitedata";
 
 export default function HeroSection() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleConsultation = useCallback(() => {
+    if (location.pathname === "/contact") {
+      const form = document.getElementById("contact-form");
+      if (form) form.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/contact");
+    }
+  }, [location.pathname, navigate]);
+
+  const handleExploreProjects = useCallback(() => {
+    navigate("/project");
+  }, [navigate]);
+
   return (
     <section
       className="relative flex items-center justify-center h-[calc(100vh-5rem)] sm:h-screen text-center bg-top bg-no-repeat bg-cover"
@@ -21,10 +39,16 @@ export default function HeroSection() {
 
         {/* buttons */}
         <div className="flex flex-col sm:flex-row gap-3 mt-8 w-full max-w-md mx-auto">
-          <button className="px-6 py-3 bg-[#606C38] hover:bg-[#283618] rounded-full text-[#FEFAE0] font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+          <button
+            onClick={handleConsultation}
+            className="cursor-pointer px-6 py-3 bg-[#606C38] hover:scale-105 hover:bg-[#283618] rounded-full text-[#FEFAE0] font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+          >
             {websiteData.hero.cta.primary}
           </button>
-          <button className="px-6 py-3 bg-[#FEFAE0]/10 border border-[#FEFAE0]/30 rounded-full text-[#FEFAE0] backdrop-blur-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto">
+          <button
+            onClick={handleExploreProjects}
+            className="cursor-pointer px-6 py-3 bg-[#FEFAE0]/10 border border-[#FEFAE0]/30 rounded-full text-[#FEFAE0] backdrop-blur-sm font-medium shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+          >
             {websiteData.hero.cta.secondary}
           </button>
         </div>

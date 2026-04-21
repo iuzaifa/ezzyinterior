@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { websiteData } from "../../data/websitedata";
 
 export default function CTA() {
-  const handleConsultationClick = () => {
-    const form = document.getElementById("contact-form");
-    if (form) {
-      form.scrollIntoView({ behavior: "smooth" });
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleConsultationClick = useCallback(() => {
+    if (location.pathname === "/contact") {
+      const form = document.getElementById("contact-form");
+      if (form) form.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/contact");
     }
-  };
+  }, [location.pathname, navigate]);
+
+  const handleViewWork = useCallback(() => {
+    navigate("/project");
+  }, [navigate]);
 
   return (
     <section className="max-w-6xl mx-auto px-6 py-20">
@@ -36,12 +46,15 @@ export default function CTA() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
             <button
               onClick={handleConsultationClick}
-              className="bg-gradient-to-r from-[#606C38] to-[#DDA15E] text-[#FEFAE0] px-6 py-3 rounded-xl font-medium hover:scale-105 active:scale-95 transition duration-300"
+              className="cursor-pointer bg-gradient-to-r from-[#606C38] to-[#DDA15E] text-[#FEFAE0] px-6 py-3 rounded-xl font-medium hover:scale-105 hover:shadow-xl active:scale-95 shadow-lg transition-all duration-300"
             >
               {websiteData.sections.cta.buttons.primary}
             </button>
 
-            <button className="border border-[#1a1423]/50 px-6 py-3 rounded-xl font-medium hover:bg-[#FEFAE0]/50 transition text-[#283618]">
+            <button
+              onClick={handleViewWork}
+              className="cursor-pointer border border-[#1a1423]/50 px-6 py-3 rounded-xl font-medium hover:scale-105 hover:bg-[#FEFAE0]/50 shadow-lg hover:shadow-xl transition-all duration-300 text-[#283618]"
+            >
               {websiteData.sections.cta.buttons.secondary}
             </button>
           </div>
