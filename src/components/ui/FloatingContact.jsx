@@ -1,10 +1,15 @@
 import React from "react";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 
+<<<<<<< HEAD
 import { websiteData } from "../../data/websitedata";
 
 const FloatingContact = () => {
   const phoneNumber = websiteData.contact.floatingPhone;
+=======
+const FloatingContact = () => {
+  const phoneNumber = "919999999999"; // replace with your number
+>>>>>>> 056a3c897da983d5ea813c9168f8894901f40578
   const message = "Hello, I want to know more about your services";
 
   return (

@@ -9,6 +9,7 @@ import {
   FiTool,
   FiCode,
 } from "react-icons/fi";
+<<<<<<< HEAD
 import { websiteData } from "../../data/websitedata";
 
 const Services = () => {
@@ -29,6 +30,96 @@ const Services = () => {
       size: 18,
     }),
   }));
+=======
+
+const Services = () => {
+  const features = [
+    {
+      icon: <FiUsers size={18} />,
+      title: "User-first design",
+      description:
+        "We design with real users in mind, focusing on clarity, usability and accessibility from day one.",
+      hasAccent: false,
+    },
+    {
+      icon: <FiMonitor size={18} />,
+      title: "Fully responsive",
+      description:
+        "Interfaces that look and feel great on desktop, tablet and mobile, no compromises.",
+      hasAccent: true,
+    },
+    {
+      icon: <FiUsers size={18} />,
+      title: "User-first design",
+      description:
+        "We design with real users in mind, focusing on clarity, usability and accessibility from day one.",
+      hasAccent: false,
+    },
+    {
+      icon: <FiMonitor size={18} />,
+      title: "Fully responsive",
+      description:
+        "Interfaces that look and feel great on desktop, tablet and mobile, no compromises.",
+      hasAccent: true,
+    },
+    {
+      icon: <FiUsers size={18} />,
+      title: "User-first design",
+      description:
+        "We design with real users in mind, focusing on clarity, usability and accessibility from day one.",
+      hasAccent: false,
+    },
+    {
+      icon: <FiMonitor size={18} />,
+      title: "Fully responsive",
+      description:
+        "Interfaces that look and feel great on desktop, tablet and mobile, no compromises.",
+      hasAccent: true,
+    },
+    {
+      icon: <FiGlobe size={18} />,
+      title: "Global-ready UX",
+      description:
+        "Clean files, clear specs and developer-friendly documentation - ready to build.",
+      hasAccent: false,
+    },
+    {
+      icon: <FiLayers size={18} />,
+      title: "Scalable systems",
+      description:
+        "Consistent components, tokens and patterns built to grow with your product.",
+      hasAccent: false,
+    },
+    {
+      icon: <FiRefreshCw size={18} />,
+      title: "Easy to iterate",
+      description:
+        "Flexible designs that adapt quickly as your product, users and goals evolve.",
+      hasAccent: false,
+    },
+    {
+      icon: <FiZap size={18} />,
+      title: "Performance-aware",
+      description:
+        "Optimized layouts and interactions that support fast load times and smooth experiences.",
+      hasAccent: false,
+    },
+    {
+      icon: <FiTool size={18} />,
+      title: "Tool-friendly",
+      description:
+        "Designs built with localization, multiple languages and diverse audiences in mind.",
+      hasAccent: false,
+    },
+    {
+      icon: <FiCode size={18} />,
+      title: "Dev-ready handoff",
+      description:
+        "From startups to enterprise, our designs integrate seamlessly with your existing workflows.",
+      hasAccent: false,
+    },
+  ];
+>>>>>>> 056a3c897da983d5ea813c9168f8894901f40578
 
   return (
     <>
@@ -36,10 +127,18 @@ const Services = () => {
         {/* TITLE */}
         <div className="max-w-5xl w-full mb-10 text-center md:mx-auto">
           <h1 className="text-3xl md:text-4xl font-semibold text-[#283618] mb-4">
+<<<<<<< HEAD
             {websiteData.sections.services.title}
           </h1>
           <p className="text-sm text-[#1a1423] max-w-xl mx-auto">
             {websiteData.sections.services.subtitle}
+=======
+            Our Services
+          </h1>
+          <p className="text-sm text-[#1a1423] max-w-xl mx-auto">
+            We deliver modern, scalable and high-performance solutions designed
+            for real-world products and real users.
+>>>>>>> 056a3c897da983d5ea813c9168f8894901f40578
           </p>
         </div>
 
