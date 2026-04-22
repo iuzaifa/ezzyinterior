@@ -14,7 +14,7 @@ const Button = ({
 
   const variants = {
     primary:
-      "bg-gradient-to-r from-[#606C38] to-[#DDA15E] text-[#FEFAE0] hover:scale-105 hover:shadow-xl px-6 py-3",
+      "bg-gradient-to-r from-[#243f04] to-[#243f04] text-[#FEFAE0] hover:scale-105 hover:shadow-xl px-6 py-3",
     secondary:
       "bg-[#FEFAE0]/10 border border-[#FEFAE0]/30 text-[#FEFAE0] backdrop-blur-sm hover:scale-105 hover:shadow-xl px-6 py-3",
     outline:
