@@ -13,8 +13,10 @@
 //         </p>
 
 //         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 relative">
-//           {/* glow background - RESPONSIVE FIX */}
-//           <div className="w-[280px] h-[280px] md:size-[520px] rounded-full absolute blur-[200px] md:blur-[300px] -z-10 bg-[#FEFAE0]/30" />
+{
+  /* glow background */
+}
+<div className="hidden md:block w-[280px] h-[280px] lg:size-[520px] rounded-full absolute blur-[200px] lg:blur-[300px] -z-10 bg-[#FEFAE0]/30 top-1/2 -left-40" />;
 
 //           {/* image */}
 //           <img
@@ -98,11 +100,11 @@ export default function AboutSection() {
         </h1>
 
         <p className="text-sm sm:text-base text-[#1a1423] text-center mt-4 max-w-md mx-auto mb-12">
-          A visual collection of our most recent interior works — crafted with creativity, precision, and elegance.
+          A visual collection of our most recent interior works — crafted with
+          creativity, precision, and elegance.
         </p>
 
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 relative">
-          
           {/* glow background */}
           <div className="w-[280px] h-[280px] md:size-[520px] rounded-full absolute blur-[200px] md:blur-[300px] -z-10 bg-[#FEFAE0]/30" />
 
@@ -120,13 +122,14 @@ export default function AboutSection() {
             </h1>
 
             <p className="text-sm text-[#1a1423] mb-8 leading-relaxed">
-              We specialize in creating modern, functional, and beautiful interiors for homes, offices, and commercial spaces. 
-              From concept to completion, we focus on quality craftsmanship, smart space planning, and timeless design that reflects your lifestyle.
+              We specialize in creating modern, functional, and beautiful
+              interiors for homes, offices, and commercial spaces. From concept
+              to completion, we focus on quality craftsmanship, smart space
+              planning, and timeless design that reflects your lifestyle.
             </p>
 
             {/* Features */}
             <div className="flex flex-col gap-6 md:gap-8">
-              
               {/* Feature 1 */}
               <div className="flex items-start gap-4">
                 <div className="text-[#DDA15E] text-xl mt-1 flex-shrink-0">
@@ -137,7 +140,8 @@ export default function AboutSection() {
                     Smart Space Planning
                   </h3>
                   <p className="text-sm text-[#1a1423]">
-                    Efficient layouts that maximize space utilization while maintaining comfort and style.
+                    Efficient layouts that maximize space utilization while
+                    maintaining comfort and style.
                   </p>
                 </div>
               </div>
@@ -152,7 +156,8 @@ export default function AboutSection() {
                     Premium Interior Design
                   </h3>
                   <p className="text-sm text-[#1a1423]">
-                    Elegant, modern, and customized designs tailored to your taste and lifestyle.
+                    Elegant, modern, and customized designs tailored to your
+                    taste and lifestyle.
                   </p>
                 </div>
               </div>
@@ -167,11 +172,11 @@ export default function AboutSection() {
                     End-to-End Execution
                   </h3>
                   <p className="text-sm text-[#1a1423]">
-                    Complete interior solutions from design to final execution with seamless project management.
+                    Complete interior solutions from design to final execution
+                    with seamless project management.
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
         </div>

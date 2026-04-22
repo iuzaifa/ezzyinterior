@@ -1,5 +1,4 @@
 import React from "react";
-import { cx } from "class-variance-authority"; // if ava installed, else plain Tailwind
 
 // Or plain Tailwind variants
 const Button = ({
@@ -30,9 +29,8 @@ const Button = ({
     lg: "px-8 py-4 text-lg",
   };
 
-  const buttonClass = cx(base, variants[variant], sizes[size], className, {
-    "w-full": props.fullWidth,
-  });
+  const buttonClass =
+    `${base} ${variants[variant]} ${sizes[size]} ${className} ${props.fullWidth ? "w-full" : ""}`.trim();
 
   return (
     <button onClick={onClick} className={buttonClass} {...props}>

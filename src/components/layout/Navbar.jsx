@@ -1,11 +1,13 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useModal } from "../../contexts/ModalContext";
+import Button from "../ui/Button.jsx";
 import { FiMenu, FiX } from "react-icons/fi";
 import { websiteData } from "../../data/websitedata";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+  const { openContactModal } = useModal();
 
   const navLinks = websiteData.navbar;
 
@@ -41,12 +43,14 @@ function Navbar() {
         </div>
 
         {/* CONTACT BUTTON */}
-        <Link
-          to="/contact"
-          className="hidden md:block bg-[#DDA15E] hover:bg-[#BC6C25] px-4 py-2 rounded-full transition text-[#FEFAE0] shadow-lg"
+        <Button
+          variant="contact"
+          size="sm"
+          onClick={openContactModal}
+          className="hidden md:block min-h-[44px]"
         >
           Contact Us
-        </Link>
+        </Button>
 
         {/* MOBILE MENU BUTTON */}
         <button
@@ -94,13 +98,17 @@ function Navbar() {
         ))}
 
         {/* CTA */}
-        <Link
-          to="/contact"
-          onClick={() => setOpen(false)}
-          className="mt-4 bg-[#DDA15E] hover:bg-[#BC6C25] px-6 py-3 rounded-full text-[#FEFAE0] font-semibold shadow-lg"
+        <Button
+          variant="primary"
+          size="lg"
+          onClick={() => {
+            openContactModal();
+            setOpen(false);
+          }}
+          className="mt-4 min-h-[48px]"
         >
           Contact Us
-        </Link>
+        </Button>
       </div>
     </div>
   );

@@ -1,5 +1,8 @@
-import React, { useCallback } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React from "react";
+
+// import { useNavigate, useLocation } from "react-router-dom";
+
+import { useModal } from "../../contexts/ModalContext";
 import {
   FiUsers,
   FiMonitor,
@@ -13,17 +16,11 @@ import {
 import { websiteData } from "../../data/websitedata";
 
 const Services = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { openContactModal } = useModal();
+  // Removed unused navigate/location
 
-  const handleServiceClick = useCallback(() => {
-    if (location.pathname === "/contact") {
-      const form = document.getElementById("contact-form");
-      if (form) form.scrollIntoView({ behavior: "smooth" });
-    } else {
-      navigate("/contact");
-    }
-  }, [location.pathname, navigate]);
+  const handleServiceClick = () => openContactModal();
+
   const iconMap = {
     FiUsers: FiUsers,
     FiMonitor: FiMonitor,
@@ -44,7 +41,7 @@ const Services = () => {
 
   return (
     <>
-      <section className=" px-6 md:px-12 py py-26 pb-32 flex flex-col items-center">
+      <section className="px-6 md:px-12 py-24 pb-32 flex flex-col items-center">
         {/* TITLE */}
         <div className="max-w-5xl w-full mb-10 text-center md:mx-auto">
           <h1 className="text-3xl md:text-4xl font-semibold text-[#283618] mb-4">
