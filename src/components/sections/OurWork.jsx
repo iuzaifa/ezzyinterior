@@ -1,10 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { websiteData } from "../../data/websitedata";
-
-const projects = websiteData.projects;
+import { buildPublicImageMap } from "../../utils/imageAutoMapper";
 
 export default function OurWork() {
   const [activeProject, setActiveProject] = useState(null);
+
+  const projects = useMemo(() => {
+    const mapped = buildPublicImageMap({});
+    // BuildPublicImageMap categories have: { name, rawCategory, images: [{src,title}] }
+    // Convert to the structure this component expects: { title, images: [src...] }
+    return mapped.categories.map((cat) => ({
+      title: cat.name,
+      images: cat.images.map((img) => img.src),
+    }));
+  }, []);
 
   // Prevent background scroll
   useEffect(() => {
@@ -15,17 +24,15 @@ export default function OurWork() {
   }, [activeProject]);
 
   // Total images count
-  const totalImages = projects.reduce(
-    (total, item) => total + item.images.length,
-    0,
-  );
+  const totalImages = projects.reduce((total, item) => total + item.images.length, 0);
+
 
   return (
     <section className="bg-[#FEFAE0] py-20 px-4 md:px-10">
       <div className="pb-16">
         <h2 className="text-3xl md:text-5xl text-center font-semibold">
-          {websiteData.sections.ourWork.title}{" "}
-          <span className="text-[#DDA15E]">Work</span>
+          {websiteData.sections.ourWork.title.slice(0,10)}{" "}
+          <span className="text-[#DDA15E]">{websiteData.sections.ourWork.title.slice(10)}</span>
         </h2>
         <p className="text-sm text-[#1a1423] text-center mt-2 max-w-md mx-auto">
           {websiteData.sections.ourWork.subtitle}

@@ -31,7 +31,7 @@ export default function Gallery() {
 
       {/* Gallery Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
-        {gallery.map((item, index) => (
+        {gallery.slice(0, 4).map((item, index) => (
           <div
             key={index}
             className="relative group h-64 md:h-80 lg:h-96 overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
