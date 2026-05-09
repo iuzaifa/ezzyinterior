@@ -433,35 +433,21 @@ export const websiteData = {
 
   team: [
     {
-      name: "Arjun Mehta",
-      role: "Founder & CEO",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=600"
+      name: "Irfan Hussain",
+      role: "Manager",
+      image: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
     },
     {
-      name: "Priya Singh",
+      name: "Ayesha Khurshid",
       role: "Senior Interior Designer",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=600"
+      image: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
     },
     {
-      name: "Rohan Kapoor",
-      role: "3D Visualizer",
-      image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=600"
+      name: "Prashant Kumar",
+      role: "Senior Interior Designers",
+      image: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
     },
-    {
-      name: "Sneha Verma",
-      role: "Project Manager",
-      image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600"
-    },
-    {
-      name: "Vikram Shah",
-      role: "Site Engineer",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600"
-    },
-    {
-      name: "Anjali Gupta",
-      role: "Design Consultant",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600"
-    }
+   
   ],
 
   contact: {
@@ -470,25 +456,23 @@ export const websiteData = {
         icon: "FiMail",
         title: "Email Address",
         content: [
-          "info@ezzyinterior.com",
-          "support@ezzyinterior.com"
+          "Ezzy.interior@gmail.com",
+          "ezzyinterior@gmail.com"
         ]
       },
       {
         icon: "FiPhone",
         title: "Phone Number",
         content: [
-          "+91 98765 43210",
-          "+91 91234 56789"
+          "+91 9693486096",
+          "+91 9155196766"
         ]
       },
       {
         icon: "FiHome",
         title: "Office Address",
         content: [
-          "EZZY Interior, 2nd Floor, Design Plaza,",
-          "MG Road, Near City Center Mall,",
-          "Lucknow, Uttar Pradesh - 226010"
+          "B-854, Ground Floor, L.F Road, Ranchi – 834001"
         ]
       }
     ],

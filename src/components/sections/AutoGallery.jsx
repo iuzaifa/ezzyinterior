@@ -1,97 +1,12 @@
-import React, { useMemo, useState } from 'react';
-import { buildPublicImageMap } from '../../utils/imageAutoMapper';
-
-const Card = ({ item, onClick }) => {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="group w-full text-left bg-white/70 hover:bg-white rounded-2xl overflow-hidden border border-[#bb9457]/15 hover:border-[#bb9457]/25 shadow-sm hover:shadow-md transition-all"
-    >
-      <div className="relative aspect-[4/3] bg-black/10">
-        <img
-          src={item.src}
-          alt={item.title}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-
-        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
-
-        <div className="absolute left-3 right-3 bottom-3 flex items-center justify-between gap-3">
-          <span className="text-[11px] font-medium px-2 py-1 rounded-full bg-white/15 text-white border border-white/20 backdrop-blur">
-            {item.category}
-          </span>
-          <span className="text-[11px] font-semibold text-white/90">
-            View
-          </span>
-        </div>
-      </div>
-
-      <div className="p-4">
-        <h3 className="font-semibold text-sm text-[#283618] truncate">
-          {item.title}
-        </h3>
-        <p className="text-xs text-[#283618]/80 mt-1 line-clamp-2">
-          {item.description}
-        </p>
-      </div>
-    </button>
-  );
-};
-
-const Modal = ({ open, image, onClose }) => {
-  if (!open || !image) return null;
-
-  return (
-    <div
-      className="fixed inset-0 z-[9999] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4"
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-    >
-      <div
-        className="w-full max-w-6xl rounded-3xl bg-white/95 backdrop-blur-xl border border-white/60 shadow-2xl overflow-hidden"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-start justify-between gap-3 p-5 border-b border-black/5">
-          <div>
-            <div className="text-xs font-semibold text-[#283618]/70">
-              {image.category}
-            </div>
-            <h2 className="text-lg font-bold text-[#283618]">
-              {image.title}
-            </h2>
-            <p className="text-sm text-[#283618]/75 mt-1">
-              {image.description}
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="shrink-0 text-2xl leading-none p-2 rounded-full hover:bg-black/5 active:scale-95 transition-transform"
-            aria-label="Close"
-          >
-            ✕
-          </button>
-        </div>
-
-        <div className="p-5">
-          <div className="rounded-2xl bg-black/5 border border-black/5 p-2">
-            <img
-              src={image.src}
-              alt={image.title}
-              className="w-full max-h-[70vh] object-contain rounded-xl"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
+import React, { useMemo, useState } from "react";
+import { buildPublicImageMap } from "../../utils/imageAutoMapper";
+import PageContainer from "../ui/PageContainer";
+import ProjectCard from "../ui/ProjectCard";
+import ImageModal from "../ui/ImageModal";
+import SectionHeading from "../ui/SectionHeading";
 
 export default function AutoGallery() {
+
   const [selected, setSelected] = useState(null);
 
   const mapped = useMemo(() => buildPublicImageMap(), []);
@@ -137,16 +52,18 @@ export default function AutoGallery() {
                 return true;
               })
               .map((item) => (
-                <Card
+                <ProjectCard
                   key={item.src}
                   item={{
                     ...item,
                     category: cat.name,
+                    description: cat.description,
                   }}
                   onClick={() =>
                     setSelected({
                       ...item,
                       category: cat.name,
+                      description: cat.description,
                     })
                   }
                 />
@@ -160,16 +77,18 @@ export default function AutoGallery() {
               arr.findIndex((x) => x.src === item.src) === idx
             )
             .map((item) => (
-              <Card
+              <ProjectCard
                 key={item.src}
                 item={{
                   ...item,
                   category: activeCategory.name,
+                  description: activeCategory.description,
                 }}
                 onClick={() =>
                   setSelected({
                     ...item,
                     category: activeCategory.name,
+                    description: activeCategory.description,
                   })
                 }
               />
@@ -180,6 +99,7 @@ export default function AutoGallery() {
   return (
     <section className="bg-gradient-to-b from-[#ffecd9] via-white to-white py-16 px-4 sm:px-6 lg:px-10">
       <div className="max-w-7xl mx-auto">
+
         <header className="text-center mb-10">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#bb9457]/25 bg-white/70 px-4 py-2 shadow-sm">
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#bb9457]" />
@@ -266,9 +186,17 @@ export default function AutoGallery() {
         </div>
       </div>
 
-      <Modal open={!!selected} image={selected} onClose={() => setSelected(null)} />
+      <ImageModal
+        open={!!selected}
+        image={selected}
+        onClose={() => setSelected(null)}
+      />
     </section>
   );
 }
+
+
+
+
 
 
