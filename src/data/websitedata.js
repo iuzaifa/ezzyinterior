@@ -476,7 +476,7 @@ export const websiteData = {
         ]
       }
     ],
-    floatingPhone: "919876543210"
+    floatingPhone: "9693486096"
   },
 
   footer: {

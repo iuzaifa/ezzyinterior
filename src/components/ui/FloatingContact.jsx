@@ -5,12 +5,13 @@ import { websiteData } from "../../data/websitedata";
 const FloatingContact = () => {
   const phoneNumber = websiteData.contact.floatingPhone;
   const message = "Hello, I want to know more about your services";
+  const whatsappNumber = "+919155196766"
 
   return (
     <div className="fixed bottom-5 right-5 flex flex-col gap-3 z-50">
       {/* WHATSAPP */}
       <a
-        href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`}
+        href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`}
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center justify-center w-13 h-13 rounded-full bg-green-600 hover:bg-green Asc-500 text-[#ffff] shadow-lg transition transform hover:scale-110"

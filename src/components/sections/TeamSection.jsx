@@ -69,9 +69,9 @@ const TeamSection = () => {
               <p className="text-sm text-[#1a1423]">{m.role}</p>
 
               <div className="flex gap-3 mt-4">
-                <a className="size-10 bg-[#FEFAE0]/50 border border-[#1a1423]/30 rounded-lg flex items-center justify-center hover:bg-[#DDA15E]/50">
+                {/* <a className="size-10 bg-[#FEFAE0]/50 border border-[#1a1423]/30 rounded-lg flex items-center justify-center hover:bg-[#DDA15E]/50">
                   <FaXTwitter size={18} />
-                </a>
+                </a> */}
                 <a className="size-10 bg-[#FEFAE0]/50 border border-[#1a1423]/30 rounded-lg flex items-center justify-center hover:bg-[#DDA15E]/50">
                   <FaLinkedinIn size={18} />
                 </a>
