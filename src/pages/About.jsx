@@ -4,7 +4,6 @@ import AboutSection from '../components/sections/AboutSection'
 import OurTeam from './OurTeam'
 import TeamSection from '../components/sections/TeamSection'
 import CTA from '../components/sections/CTA'
-import Gallery from '../components/sections/Gallery'
 import ContactInfo from '../components/sections/ContactInfo'
 const About = () => {
   return (
@@ -12,7 +11,6 @@ const About = () => {
       <BreadcrumbHeader title="About" />
       <AboutSection/>
       <TeamSection/>
-      <Gallery/>
       <CTA/>
       <ContactInfo/>
     </>

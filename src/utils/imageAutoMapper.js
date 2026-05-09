@@ -51,7 +51,24 @@ const categoryDescription = (category) => {
   return 'Interior project ideas curated for style, functionality, and modern design details.';
 };
 
-const filenameToTitle = (filename) => titleize(filename);
+const filenameToTitle = (filename) => {
+  // Special-case formatting for filenames/folders like:
+  //   "chaputoli 1 r2.jpg" / "chaputoli 1 r3.jpg" / "chaputoli 3r.jpg"
+  // We want the displayed title to be exactly: "Chaputoli 1, Chaputoli 12"
+  const cleaned = filename
+    .replace(/\.[^/.]+$/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const chapMatch = cleaned.match(/\bchaputoli\s*(\d+)\b/i);
+  if (chapMatch) {
+    const n = chapMatch[1];
+    return `Chaputoli ${n}`;
+  }
+
+  return titleize(filename);
+};
+
 
 /**
  * Generates a map of:
