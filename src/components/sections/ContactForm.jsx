@@ -1,6 +1,7 @@
 import React from "react";
 import { FaLinkedinIn, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import SharedContactForm from "../ui/SharedContactForm";
 
 const ContactForm = () => {
   return (
@@ -49,85 +50,7 @@ const ContactForm = () => {
               Send Message
             </h2>
 
-            <form id="contact-form" className="flex flex-col gap-4">
-              {/* NAME + EMAIL */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs text-[#283618]">Full Name</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Enter your name"
-                    className="bg-white border border-[#62748e] text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 rounded-xl px-4 py-3 outline-none transition-colors"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs text-[#283618]">Email</label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="Enter your email"
-                    className="bg-white border border-[#62748e] text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 rounded-xl px-4 py-3 outline-none transition-colors"
-                  />
-                </div>
-              </div>
-
-              {/* PHONE + WHATSAPP */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs text-[#283618]">Phone Number</label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="Enter phone number"
-                    className="bg-white border border-[#62748e] text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 rounded-xl px-4 py-3 outline-none transition-colors"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs text-[#283618]">
-                    WhatsApp Number
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="Enter WhatsApp number"
-                    className="bg-white border border-[#62748e] text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 rounded-xl px-4 py-3 outline-none transition-colors"
-                  />
-                </div>
-              </div>
-
-              {/* ADDRESS */}
-              <div className="flex flex-col gap-2">
-                <label className="text-xs text-[#283618]">Address</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Enter your address"
-                  className="bg-white border border-[#62748e] text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 rounded-xl px-4 py-3 outline-none transition-colors"
-                />
-              </div>
-
-              {/* MESSAGE */}
-              <div className="flex flex-col gap-2">
-                <label className="text-xs text-[#283618]">Message</label>
-                <textarea
-                  required
-                  rows="4"
-                  placeholder="Write your message..."
-                  className="bg-white border border-[#62748e] text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 rounded-xl px-4 py-3 outline-none transition-colors resize-vertical"
-                ></textarea>
-              </div>
-
-              {/* BUTTON */}
-              <button
-                type="submit"
-                className="bg-[#606C38] hover:bg-[#283618] text-[#FEFAE0] text-base py-3 rounded-lg transition-all duration-300 mt-2 font-medium"
-              >
-                Send Message
-              </button>
-            </form>
+            <SharedContactForm variant="page" />
           </div>
         </div>
       </section>
@@ -136,3 +59,4 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
