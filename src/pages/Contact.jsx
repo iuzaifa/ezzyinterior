@@ -8,9 +8,9 @@ const Contact = () => {
   return (
     <>
       <BreadcrumbHeader title="Contact" />
-      <ContactInfo/>
+      <ContactInfo />
       <ContactForm />
-      <CTA/>
+      <CTA />
     </>
   );
 };

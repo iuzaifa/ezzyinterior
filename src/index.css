@@ -29,19 +29,23 @@ a {
   cursor: pointer;
 }
 
-button, [type="button"], [type="submit"], [type="reset"] {
+button,
+[type="button"],
+[type="submit"],
+[type="reset"] {
   min-height: 44px;
   touch-action: manipulation;
 }
 
 @media (hover: hover) {
-  button:hover, [role="button"]:hover, .cursor-pointer:hover {
+  button:hover,
+  [role="button"]:hover,
+  .cursor-pointer:hover {
     transform: scale(1.02);
   }
 }
 
 :focus-visible {
-  outline: 2px solid #606C38;
+  outline: 2px solid #606c38;
   outline-offset: 2px;
 }
-

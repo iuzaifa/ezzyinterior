@@ -5,7 +5,7 @@ import { websiteData } from "../../data/websitedata";
 const FloatingContact = () => {
   const phoneNumber = websiteData.contact.floatingPhone;
   const message = "Hello, I want to know more about your services";
-  const whatsappNumber = "+919155196766"
+  const whatsappNumber = "+919155196766";
 
   return (
     <div className="fixed bottom-5 right-5 flex flex-col gap-3 z-50">

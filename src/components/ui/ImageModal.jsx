@@ -27,9 +27,7 @@ export default function ImageModal({
                 {image.category}
               </div>
             ) : null}
-            <h2 className="text-lg font-bold text-[#283618]">
-              {image.title}
-            </h2>
+            <h2 className="text-lg font-bold text-[#283618]">{image.title}</h2>
             {image.description ? (
               <p className="text-sm text-[#283618]/75 mt-1">
                 {image.description}
@@ -61,4 +59,3 @@ export default function ImageModal({
     </div>
   );
 }
-

@@ -1,10 +1,6 @@
 import React from "react";
 
-export default function ProjectCard({
-  item,
-  onClick,
-  badge,
-}) {
+export default function ProjectCard({ item, onClick, badge }) {
   return (
     <button
       type="button"
@@ -32,9 +28,7 @@ export default function ProjectCard({
               {item.category}
             </span>
           ) : null}
-          <span className="text-[11px] font-semibold text-white/90">
-            View
-          </span>
+          <span className="text-[11px] font-semibold text-white/90">View</span>
         </div>
       </div>
 
@@ -51,4 +45,3 @@ export default function ProjectCard({
     </button>
   );
 }
-

@@ -5,7 +5,6 @@ function App() {
     <div className="text-center mt-10">
       {/* #71717b every paragraph color or text  */}
       {/*  */}
-      
     </div>
   );
 }

@@ -1,4 +1,11 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { sendEmailToMyAccount } from "../../services/emailjs/emailService";
+
+const REQUIRED_FIELDS_BY_VARIANT = {
+  page: ["name", "email", "message"],
+  modal: ["name", "email", "message"],
+};
 
 const SharedContactForm = ({ variant = "page", onSuccess }) => {
   const [formData, setFormData] = useState({
@@ -8,6 +15,7 @@ const SharedContactForm = ({ variant = "page", onSuccess }) => {
     message: "",
     address: "",
   });
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -21,37 +29,51 @@ const SharedContactForm = ({ variant = "page", onSuccess }) => {
     setIsLoading(true);
 
     try {
-      const payload = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        message: formData.message,
-        address: formData.address,
-      };
+      // Validate required fields before sending.
+      const variantKey = variant === "page" ? "page" : "modal";
+      const requiredFields = REQUIRED_FIELDS_BY_VARIANT[variantKey];
+      const missing = requiredFields.filter((key) => !String(formData[key] || "").trim());
 
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data?.error || "Failed to send message");
+      if (missing.length) {
+        const first = missing[0];
+        throw new Error(`Please provide ${first}`);
       }
 
-      setIsLoading(false);
+      // EmailJS template params:
+      // IMPORTANT: Update these keys to match your EmailJS template variables.
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        // optional field(s) - include only if present in your EmailJS template
+        ...(formData.address ? { address: formData.address } : {}),
+      };
+
+
+      await sendEmailToMyAccount({ templateParams });
+
+      toast.success("Message sent successfully");
       onSuccess?.();
-    } catch (err) {
+
+      // Keep UI consistent: clear error, stop loading.
+      setError("");
       setIsLoading(false);
-      setError(err?.message || "Failed to send message");
+    } catch (err) {
+      const message = err?.message || "Failed to send message";
+      setError(message);
+      toast.error("Failed to send message");
+      setIsLoading(false);
     }
   };
+
 
   const showAddress = variant === "page";
 
   return (
-    <form onSubmit={handleSubmit} className={variant === "page" ? "flex flex-col gap-4" : "space-y-4"}>
+    <form
+      onSubmit={handleSubmit}
+      className={variant === "page" ? "flex flex-col gap-4" : "space-y-4"}
+    >
       {variant === "page" ? (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -85,24 +107,24 @@ const SharedContactForm = ({ variant = "page", onSuccess }) => {
               <label className="text-xs text-[#283618]">Phone Number</label>
               <input
                 type="tel"
-                required
                 placeholder="Enter phone number"
                 value={formData.phone}
                 onChange={setField("phone")}
                 className="bg-white border border-[#62748e] text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 rounded-xl px-4 py-3 outline-none transition-colors"
               />
+
             </div>
 
             <div className="flex flex-col gap-2">
               <label className="text-xs text-[#283618]">WhatsApp Number</label>
               <input
                 type="tel"
-                required
                 placeholder="Enter WhatsApp number"
                 value={formData.phone}
                 onChange={setField("phone")}
                 className="bg-white border border-[#62748e] text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 rounded-xl px-4 py-3 outline-none transition-colors"
               />
+
             </div>
           </div>
 
@@ -179,15 +201,15 @@ const SharedContactForm = ({ variant = "page", onSuccess }) => {
             <label className="block text-xs font-medium text-[#283618] mb-1">
               Phone / WhatsApp
             </label>
-            <input
-              type="tel"
-              name="phone"
-              required
-              value={formData.phone}
-              onChange={setField("phone")}
-              className="w-full px-4 py-3 rounded-xl border border-[#62748e]/50 text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 outline-none transition-all"
-              placeholder="+91 98765 43210"
-            />
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={setField("phone")}
+                className="w-full px-4 py-3 rounded-xl border border-[#62748e]/50 text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 outline-none transition-all"
+                placeholder="+91 98765 43210"
+              />
+
           </div>
 
           <div>
@@ -221,4 +243,3 @@ const SharedContactForm = ({ variant = "page", onSuccess }) => {
 };
 
 export default SharedContactForm;
-
