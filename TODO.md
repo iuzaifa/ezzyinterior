@@ -1,0 +1,6 @@
+- [x] Update SharedContactForm to include required fields: Full Name, Email, WhatsApp/Phone, Message, Address for both page + modal variants
+- [x] Fix WhatsApp/Phone UI bug (remove duplicate field + ensure single input binds to phone)
+- [x] Send EmailJS template params including: name, email, phone, whatsapp, message, address
+- [x] Ensure modal variant shows Address and Phone fields
+- [ ] Search repo for any other contact form implementations and update if needed
+- [x] Run lint/build to verify compilation (note: existing eslint issue in ModalContext.jsx remains)

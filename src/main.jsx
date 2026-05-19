@@ -39,6 +39,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       draggable
       pauseOnHover
       theme="light"
+      style={{ zIndex: 200000 }}
     />
   </React.StrictMode>,
 );

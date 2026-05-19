@@ -1,243 +1,278 @@
+// import { useState } from "react";
+// import { toast } from "react-toastify";
+// import { sendEmailToMyAccount } from "../../services/emailjs/emailService";
+
+// const SharedContactForm = () => {
+
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     phone: "",
+//     address: "",
+//     message: "",
+//   });
+
+//   const [isLoading, setIsLoading] = useState(false);
+
+//   const setField = (key) => (e) => {
+//     setFormData((prev) => ({
+//       ...prev,
+//       [key]: e.target.value,
+//     }));
+//   };
+
+//   const handleSubmit = async (e) => {
+
+//     e.preventDefault();
+
+//     setIsLoading(true);
+
+//     try {
+
+//       const templateParams = {
+
+//         senderName: formData.name,
+
+//         reply_to: formData.email,
+
+//         message: `
+//             Name: ${formData.name}
+
+//             Email: ${formData.email}
+
+//             Phone: ${formData.phone}
+
+//             Address: ${formData.address}
+
+//             Message:
+//             ${formData.requirement}
+//         `,
+//       };
+
+//       await sendEmailToMyAccount(templateParams);
+
+//       toast.success("Message sent successfully");
+
+//       setFormData({
+//         name: "",
+//         email: "",
+//         phone: "",
+//         address: "",
+//         requirement: "",
+//       });
+
+//     } catch (error) {
+
+//       console.log(error);
+
+//       toast.error(
+//         error.message || "Failed to send message"
+//       );
+
+//     } finally {
+
+//       setIsLoading(false);
+
+//     }
+//   };
+
+//   return (
+
+//     <form
+//       onSubmit={handleSubmit}
+//       className="flex flex-col gap-4"
+//     >
+
+//       <input
+//         type="text"
+//         placeholder="Full Name"
+//         value={formData.name}
+//         onChange={setField("name")}
+//         className="border p-3 rounded-lg"
+//         required
+//       />
+
+//       <input
+//         type="email"
+//         placeholder="Email"
+//         value={formData.email}
+//         onChange={setField("email")}
+//         className="border p-3 rounded-lg"
+//         required
+//       />
+
+//       <input
+//         type="tel"
+//         placeholder="Phone Number"
+//         value={formData.phone}
+//         onChange={setField("phone")}
+//         className="border p-3 rounded-lg"
+//         required
+//       />
+
+//       <input
+//         type="text"
+//         placeholder="Address"
+//         value={formData.address}
+//         onChange={setField("address")}
+//         className="border p-3 rounded-lg"
+//       />
+
+//       <textarea
+//         placeholder="Write your requirement what you want"
+//         value={formData.requirement}
+//         onChange={setField("message")}
+//         className="border p-3 rounded-lg"
+//         rows={5}
+//         required
+//       />
+
+//       <button
+//         type="submit"
+//         disabled={isLoading}
+//         className="bg-black text-white p-3 rounded-lg"
+//       >
+//         {isLoading ? "Sending..." : "Send Message"}
+//       </button>
+
+//     </form>
+//   );
+// };
+
+// export default SharedContactForm;
+
+
+
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { sendEmailToMyAccount } from "../../services/emailjs/emailService";
 
-const REQUIRED_FIELDS_BY_VARIANT = {
-  page: ["name", "email", "message"],
-  modal: ["name", "email", "message"],
-};
+const SharedContactForm = () => {
 
-const SharedContactForm = ({ variant = "page", onSuccess }) => {
   const [formData, setFormData] = useState({
     name: "",
-    phone: "",
     email: "",
-    message: "",
+    phone: "",
     address: "",
+    message: "",
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const setField = (key) => (e) => {
-    setFormData((prev) => ({ ...prev, [key]: e.target.value }));
+    setFormData((prev) => ({
+      ...prev,
+      [key]: e.target.value,
+    }));
   };
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
-    setError("");
+
     setIsLoading(true);
 
     try {
-      // Validate required fields before sending.
-      const variantKey = variant === "page" ? "page" : "modal";
-      const requiredFields = REQUIRED_FIELDS_BY_VARIANT[variantKey];
-      const missing = requiredFields.filter((key) => !String(formData[key] || "").trim());
 
-      if (missing.length) {
-        const first = missing[0];
-        throw new Error(`Please provide ${first}`);
-      }
-
-      // EmailJS template params:
-      // IMPORTANT: Update these keys to match your EmailJS template variables.
       const templateParams = {
-        name: formData.name,
-        email: formData.email,
+
+        senderName: formData.name,
+
+        reply_to: formData.email,
+
+        phone: formData.phone,
+
+        address: formData.address,
+
         message: formData.message,
-        // optional field(s) - include only if present in your EmailJS template
-        ...(formData.address ? { address: formData.address } : {}),
       };
 
-
-      await sendEmailToMyAccount({ templateParams });
+      await sendEmailToMyAccount(templateParams);
 
       toast.success("Message sent successfully");
-      onSuccess?.();
 
-      // Keep UI consistent: clear error, stop loading.
-      setError("");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        address: "",
+        message: "",
+      });
+
+    } catch (error) {
+
+      console.log(error);
+
+      toast.error(
+        error.message || "Failed to send message"
+      );
+
+    } finally {
+
       setIsLoading(false);
-    } catch (err) {
-      const message = err?.message || "Failed to send message";
-      setError(message);
-      toast.error("Failed to send message");
-      setIsLoading(false);
+
     }
   };
 
-
-  const showAddress = variant === "page";
-
   return (
+
     <form
       onSubmit={handleSubmit}
-      className={variant === "page" ? "flex flex-col gap-4" : "space-y-4"}
+      className="flex flex-col gap-4"
     >
-      {variant === "page" ? (
-        <>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="flex flex-col gap-2">
-              <label className="text-xs text-[#283618]">Full Name</label>
-              <input
-                type="text"
-                required
-                placeholder="Enter your name"
-                value={formData.name}
-                onChange={setField("name")}
-                className="bg-white border border-[#62748e] text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 rounded-xl px-4 py-3 outline-none transition-colors"
-              />
-            </div>
 
-            <div className="flex flex-col gap-2">
-              <label className="text-xs text-[#283618]">Email</label>
-              <input
-                type="email"
-                required
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={setField("email")}
-                className="bg-white border border-[#62748e] text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 rounded-xl px-4 py-3 outline-none transition-colors"
-              />
-            </div>
-          </div>
+      <input
+        type="text"
+        placeholder="Full Name"
+        value={formData.name}
+        onChange={setField("name")}
+        className="border p-3 rounded-lg"
+        required
+      />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="flex flex-col gap-2">
-              <label className="text-xs text-[#283618]">Phone Number</label>
-              <input
-                type="tel"
-                placeholder="Enter phone number"
-                value={formData.phone}
-                onChange={setField("phone")}
-                className="bg-white border border-[#62748e] text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 rounded-xl px-4 py-3 outline-none transition-colors"
-              />
+      <input
+        type="email"
+        placeholder="Email"
+        value={formData.email}
+        onChange={setField("email")}
+        className="border p-3 rounded-lg"
+        required
+      />
 
-            </div>
+      <input
+        type="tel"
+        placeholder="Phone Number"
+        value={formData.phone}
+        onChange={setField("phone")}
+        className="border p-3 rounded-lg"
+        required
+      />
 
-            <div className="flex flex-col gap-2">
-              <label className="text-xs text-[#283618]">WhatsApp Number</label>
-              <input
-                type="tel"
-                placeholder="Enter WhatsApp number"
-                value={formData.phone}
-                onChange={setField("phone")}
-                className="bg-white border border-[#62748e] text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 rounded-xl px-4 py-3 outline-none transition-colors"
-              />
+      <input
+        type="text"
+        placeholder="Address"
+        value={formData.address}
+        onChange={setField("address")}
+        className="border p-3 rounded-lg"
+      />
 
-            </div>
-          </div>
+      <textarea
+        placeholder="Write your requirement what you want"
+        value={formData.message}
+        onChange={setField("message")}
+        className="border p-3 rounded-lg"
+        rows={5}
+        required
+      />
 
-          {showAddress && (
-            <div className="flex flex-col gap-2">
-              <label className="text-xs text-[#283618]">Address</label>
-              <input
-                type="text"
-                placeholder="Enter your address"
-                value={formData.address}
-                onChange={setField("address")}
-                className="bg-white border border-[#62748e] text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 rounded-xl px-4 py-3 outline-none transition-colors"
-              />
-            </div>
-          )}
+      <button
+        type="submit"
+        disabled={isLoading}
+        className="bg-black text-white p-3 rounded-lg"
+      >
+        {isLoading ? "Sending..." : "Send Message"}
+      </button>
 
-          <div className="flex flex-col gap-2">
-            <label className="text-xs text-[#283618]">Message</label>
-            <textarea
-              required
-              rows="4"
-              placeholder="Write your message..."
-              value={formData.message}
-              onChange={setField("message")}
-              className="bg-white border border-[#62748e] text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 rounded-xl px-4 py-3 outline-none transition-colors resize-vertical"
-            />
-          </div>
-
-          {error && <p className="text-sm text-red-600">{error}</p>}
-
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="bg-[#606C38] hover:bg-[#283618] text-[#FEFAE0] text-base py-3 rounded-lg transition-all duration-300 mt-2 font-medium disabled:opacity-60"
-          >
-            {isLoading ? "Sending..." : "Send Message"}
-          </button>
-        </>
-      ) : (
-        <>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs font-medium text-[#283618] mb-1">
-                Full Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                required
-                value={formData.name}
-                onChange={setField("name")}
-                className="w-full px-4 py-3 rounded-xl border border-[#62748e]/50 text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 outline-none transition-all"
-                placeholder="Your name"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-medium text-[#283618] mb-1">
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                required
-                value={formData.email}
-                onChange={setField("email")}
-                className="w-full px-4 py-3 rounded-xl border border-[#62748e]/50 text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 outline-none transition-all"
-                placeholder="your@email.com"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-xs font-medium text-[#283618] mb-1">
-              Phone / WhatsApp
-            </label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={setField("phone")}
-                className="w-full px-4 py-3 rounded-xl border border-[#62748e]/50 text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 outline-none transition-all"
-                placeholder="+91 98765 43210"
-              />
-
-          </div>
-
-          <div>
-            <label className="block text-xs font-medium text-[#283618] mb-1">
-              Message
-            </label>
-            <textarea
-              name="message"
-              required
-              rows="4"
-              value={formData.message}
-              onChange={setField("message")}
-              className="w-full px-4 py-3 rounded-xl border border-[#62748e]/50 text-[#283618] placeholder:text-[#62748e]/60 focus:border-[#606C38] focus:ring-2 focus:ring-[#606C38]/20 outline-none transition-all resize-vertical"
-              placeholder="Tell us about your project..."
-            />
-          </div>
-
-          {error && <p className="text-sm text-red-600">{error}</p>}
-
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full bg-gradient-to-r from-[#606C38] to-[#283618] hover:from-[#283618] hover:to-[#606C38] text-[#FEFAE0] py-3 px-6 rounded-xl font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] flex items-center justify-center gap-2"
-          >
-            {isLoading ? "Sending..." : "Send Message"}
-          </button>
-        </>
-      )}
     </form>
   );
 };
